@@ -5,7 +5,7 @@ import CleanWebpackPlugin from 'clean-webpack-plugin';
 export default () => ({
   mode: 'production',
   entry: {
-    index: path.join(__dirname, './index.js')
+    index: path.join(__dirname, './index.tsx')
   },
 
   output: {
@@ -16,17 +16,10 @@ export default () => ({
   module: {
     rules: [
       {
-        test: /.jsx?$/,
+        test: /.tsx?$/,
         exclude: /node_modules/,
 
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: ['@babel/preset-env', '@babel/preset-react']
-            }
-          }
-        ]
+        use: 'ts-loader'
       },
       {
         test: /\.(scss)$/,
@@ -36,7 +29,7 @@ export default () => ({
   },
 
   resolve: {
-    extensions: ['.js', '.jsx', '.scss']
+    extensions: ['.js', '.tsx', '.scss']
   },
 
   plugins: [

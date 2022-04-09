@@ -15,7 +15,7 @@ export default () => ({
     // bundle the client for hot reloading
     // only- means to only hot reload for successful updates
 
-    './examples/index.js'
+    './examples/index.tsx'
     // the entry point of our app
   ],
 
@@ -44,16 +44,9 @@ export default () => ({
   module: {
     rules: [
       {
-        test: /.jsx?$/,
+        test: /.tsx?$/,
         exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: ['@babel/preset-env', '@babel/preset-react']
-            }
-          }
-        ]
+        use: 'ts-loader'
       },
       {
         test: /\.(scss)$/,
@@ -63,7 +56,7 @@ export default () => ({
   },
 
   resolve: {
-    extensions: ['.js', '.jsx', '.scss']
+    extensions: ['.js', '.jsx', '.tsx', '.ts', '.scss']
   },
 
   plugins: [new webpack.HotModuleReplacementPlugin()],

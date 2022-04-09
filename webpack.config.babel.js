@@ -5,7 +5,7 @@ const packageJson = require('./package.json');
 export default () => ({
   mode: 'production',
   entry: {
-    index: path.join(__dirname, 'src/index.js')
+    index: path.join(__dirname, 'src/index.tsx')
   },
 
   output: {
@@ -19,17 +19,10 @@ export default () => ({
   module: {
     rules: [
       {
-        test: /.jsx?$/,
+        test: /.tsx?$/,
         exclude: /node_modules/,
         include: path.join(__dirname, 'src'),
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: ['@babel/preset-env', '@babel/preset-react']
-            }
-          }
-        ]
+        use: 'ts-loader'
       },
       {
         test: /\.(scss)$/,
@@ -39,7 +32,7 @@ export default () => ({
   },
 
   resolve: {
-    extensions: ['.js', '.jsx', '.scss']
+    extensions: ['.js', '.jsx', '.tsx', '.scss']
   },
 
   externals: {
