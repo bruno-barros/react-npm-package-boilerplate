@@ -4,7 +4,7 @@
     "browser": true,
     "node": true,
     "es6": true,
-    "jest": true
+    "jest/globals": true
   },
   "parserOptions": {
     "ecmaVersion": 7,
@@ -14,12 +14,18 @@
     }
   },
   "plugins": [
-    "react"
+    "react",
+    "jest"
   ],
   "extends": ["eslint:recommended", "plugin:react/recommended"],
   "rules": {
-    "no-multiple-empty-lines": ["error", { "max": 2 }],
-    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "no-multiple-empty-lines": ["error", { "max": 2 }],   
     "no-console": 1
+  },
+  "settings": {
+    "react": {
+      "pragma": "React",
+      "version": "16.12.0"
+    }
   }
 }
